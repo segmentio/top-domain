@@ -1,0 +1,16 @@
+{
+  "name": "top-domain",
+  "repo": "segmentio/top-domain",
+  "description": "Finds the top domain for a url",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "component/url" : "*"
+  },
+  "development": {},
+  "license": "MIT",
+  "scripts": [
+    "index.js"
+  ],
+  "main": "index.js"
+}
