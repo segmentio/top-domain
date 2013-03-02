@@ -1,4 +1,3 @@
-
 # top-domain
 
   Makes a reasonable guess at the 'top' domain for a url, useful for cookie-ing.
@@ -12,7 +11,7 @@
 ```
 var topDomain = require('top-domain');
 
-topDomain('http://google.co.uk/some_other_path#good') // 'google.co.uk'
+topDomain('http://www.google.co.uk/some_other_path#good') // 'google.co.uk'
 ```
    
 
