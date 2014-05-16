@@ -9,7 +9,7 @@
 
 ## API
 
-```
+```js
 var domain = require('top-domain');
 
 assert('google.com' == domain('http://www.google.com'));
