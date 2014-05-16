@@ -8,4 +8,7 @@ components: component.json
 clean:
 	rm -fr build components template.js
 
-.PHONY: clean
+test: build
+	@component test phantom
+
+.PHONY: clean test

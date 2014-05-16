@@ -1,16 +1,18 @@
 
-var topDomain = require('top-domain');
 
 describe('topDomain', function () {
+  var domain = require('top-domain');
+  var assert = require('assert');
 
   it('should match the following urls', function () {
-
-    expect(topDomain('http://www.google.com')).to.be('google.com');
-    expect(topDomain('http://www.google.co.uk')).to.be('google.co.uk');
-    expect(topDomain('http://google.co.uk')).to.be('google.co.uk');
-    expect(topDomain('http://google.com')).to.be('google.com');
-    expect(topDomain('http://gist.github.com/calvinfo/some_file')).to.be('github.com');
-    expect(topDomain('http://localhost:7000')).to.be('localhost');
-    expect(topDomain('https://google.com:443/stuff')).to.be('google.com');
+    assert('google.com' == domain('http://www.google.com'));
+    assert('google.co.uk' == domain('http://www.google.co.uk'));
+    assert('google.co.uk' == domain('http://google.co.uk'));
+    assert('github.com' == domain('http://gist.github.com/calvinfo/some_file'));
+    assert('' == domain('http://localhost:3000'));
+    assert('google.com' == domain('https://google.com:443/stuff'));
+    assert('' == domain('http://dev:3000'));
+    assert('' == domain('0.0.0.0'));
+    assert('' == domain('127.0.0.1'));
   });
 });
