@@ -4,24 +4,34 @@
  */
 
 var parse = require('url').parse;
+var cookie = require('cookie');
 
 /**
  * Expose `domain`
  */
 
-module.exports = domain;
+exports = module.exports = domain;
 
 /**
- * RegExp
+ * Expose `cookie` for testing.
  */
 
-var regexp = /[a-z0-9][a-z0-9\-]*[a-z0-9]\.[a-z\.]{2,6}$/i;
+exports.cookie = cookie;
 
 /**
  * Get the top domain.
- * 
- * Official Grammar: http://tools.ietf.org/html/rfc883#page-56
- * Look for tlds with up to 2-6 characters.
+ *
+ * The function constructs the levels of domain
+ * and attempts to set a global cookie on each one
+ * when it succeeds it returns the top level domain.
+ *
+ * The method returns an empty string when the hostname
+ * is an ip or `localhost`.
+ *
+ * Example levels:
+ *
+ *      domain.levels('http://www.google.co.uk');
+ *      // => ["co.uk", "google.co.uk", "www.google.co.uk"]
  * 
  * Example:
  * 
@@ -40,7 +50,53 @@ var regexp = /[a-z0-9][a-z0-9\-]*[a-z0-9]\.[a-z\.]{2,6}$/i;
  */
 
 function domain(url){
+  var cookie = exports.cookie;
+  var levels = exports.levels(url);
+
+  // Lookup the real top level one.
+  for (var i = 0; i < levels.length; ++i) {
+    var cname = '__tld__';
+    var domain = levels[i];
+    var opts = { domain: '.' + domain };
+
+    cookie(cname, 1, opts);
+    if (cookie(cname)) {
+      cookie(cname, null);
+      return domain
+    }
+  }
+
+  return '';
+};
+
+/**
+ * Levels returns all levels of the given url.
+ *
+ * @param {String} url
+ * @return {Array}
+ * @api public
+ */
+
+domain.levels = function(url){
   var host = parse(url).hostname;
-  var match = host.match(regexp);
-  return match ? match[0] : '';
+  var parts = host.split('.');
+  var last = parts[parts.length-1];
+  var levels = [];
+
+  // Ip address.
+  if (4 == parts.length && parseInt(last, 10) == last) {
+    return levels;
+  }
+
+  // Localhost.
+  if (1 >= parts.length) {
+    return levels;
+  }
+
+  // Create levels.
+  for (var i = parts.length-2; 0 <= i; --i) {
+    levels.push(parts.slice(i).join('.'));
+  }
+
+  return levels;
 };

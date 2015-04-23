@@ -11,4 +11,7 @@ clean:
 test: build
 	@component test phantom
 
+test-browser: build
+	@component test chrome
+
 .PHONY: clean test

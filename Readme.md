@@ -1,7 +1,10 @@
 
 # domain
 
-  Makes a reasonable guess at the 'top' domain for a url, useful for cookie-ing.
+  Constructs possible levels from a url and attempts to set a cookie `"." + domain`
+  for each, when it succeeds it returns the top level domain.
+
+  This only works on the domain itself, since it attempts to set a cookie.
 
 ## Installation
 
