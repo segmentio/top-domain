@@ -3,7 +3,7 @@
   "remotes": ["https://raw.githubusercontent.com/"],
   "repo": "segmentio/top-domain",
   "description": "Finds the top domain for a url",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "keywords": ["top-domain", "parse"],
   "dependencies": {
     "component/url" : "*",
