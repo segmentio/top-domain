@@ -12,8 +12,6 @@ describe('topDomain', function () {
           var parts = opts.domain.split('.');
           if ('co' == parts[1]) return;
           cookies[name] = val;
-        case 2:
-          cookies[name] = val;
         case 1:
           return cookies[name];
       }
