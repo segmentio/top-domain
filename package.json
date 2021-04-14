@@ -1,6 +1,6 @@
 {
   "name": "@segment/top-domain",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Finds the top domain for a URL",
   "keywords": [
     "domain",
