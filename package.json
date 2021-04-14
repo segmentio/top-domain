@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/segmentio/top-domain#readme",
   "dependencies": {
-    "component-cookie": "^1.1.2",
+    "component-cookie": "^1.1.5",
     "component-url": "^0.2.1"
   },
   "devDependencies": {
