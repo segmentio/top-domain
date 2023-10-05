@@ -1,5 +1,8 @@
 # domain
 
+> **Note**  
+> Segment has paused maintenance on this project, but may return it to an active status in the future. Issues and pull requests from external contributors are not being considered, although internal contributions may appear from time to time. The project remains available under its open source license for anyone to use.
+
 [![CircleCI](https://circleci.com/gh/segmentio/top-domain.svg?style=shield&circle-token=a8809ce04276a1cb738c1818284155be3021a7dc)](https://circleci.com/gh/segmentio/top-domain)
 [![Codecov](https://img.shields.io/codecov/c/github/segmentio/top-domain/master.svg?maxAge=2592000)](https://codecov.io/gh/segmentio/top-domain)
 
